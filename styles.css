@@ -1,17 +1,40 @@
 body {
+	--bg-color: whitesmoke;
+  --text-color: #242325;
+  --accent-color: #8a8aff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #242325;
+  background-color: var(--bg-color);
   font-size: 22px;
-  color: whitesmoke;
-	overflow-x: hidden;
+  color: var(--text-color);
+  overflow-x: hidden;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-color: #242325;
+    --text-color: whitesmoke;
+    --accent-color: #d0d0f5;
+  }
+}
+body.dark-theme {
+  --bg-color: #242325;
+  --text-color: whitesmoke;
+  --accent-color: #d0d0f5;
 }
 
 h1 {
   margin: 0 auto 15px;
   max-width: 700px;
   font-size: 34px;
+}
+
+a {
+  color: var(--accent-color);
+  transition: color 0.3s;
 }
 
 button {
@@ -27,11 +50,10 @@ button {
 }
 
 button:hover {
-  color: #d0d0f5;
+  color: var(--accent-color);
 }
 
 table {
-  --color: #d0d0f5;
   display: table;
   border-spacing: 2px;
   border-collapse: collapse;
@@ -40,7 +62,7 @@ table {
 }
 
 tbody tr:nth-child(even) {
-  background: color-mix(in srgb, var(--color), transparent 80%);
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
 th,
@@ -51,7 +73,7 @@ td {
 }
 
 th {
-  border-bottom: 2px solid var(--color);
+  border-bottom: 2px solid var(--accent-color);
   font-weight: 700;
 }
 
@@ -62,7 +84,7 @@ th {
 }
 
 .where-at {
-  border-bottom: 2px dotted #d0d0f5;
+  border-bottom: 2px dotted var(--accent-color);
 }
 .where-at:hover {
   border-color: transparent;

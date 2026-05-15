@@ -17,7 +17,16 @@ matcher.addEventListener('change', switchFavicon);
 
 switchFavicon(matcher);
 /* / === */
+/* === */
+// Change theme by trigger button.
+const themeSwitcher = document.querySelector('.theme-toggle');
 
+themeSwitcher.addEventListener('click', () => {
+	document.body.classList.toggle('dark-theme');
+});
+/* / === */
+/* === */
+// Main functionality: load resolutions data, render it in a table, and allow sorting by width, height, and portion. Also allows switching between Russian Federation and world resolutions.
 const whereAtButton = document.querySelector('.where-at');
 const tbody = document.querySelector('.resolutions-list tbody');
 const widthSorting = document.querySelector('.width-header');
@@ -134,3 +143,4 @@ whereAtButton.addEventListener('click', () => {
 });
 
 loadResolutions();
+/* / === */
