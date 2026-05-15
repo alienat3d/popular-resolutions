@@ -105,8 +105,8 @@ whereAtButton.addEventListener('click', () => {
     whereAtButton.textContent = 'мире';
     pathsToDBArray = './world-resolutions.json';
   } else {
-    pathsToDBArray = './russia-resolutions.json';
     whereAtButton.textContent = 'Российской Федерации';
+    pathsToDBArray = './russia-resolutions.json';
   }
 	
   tbody.innerHTML = '';
