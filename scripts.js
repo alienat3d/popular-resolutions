@@ -1,13 +1,17 @@
+const whereAtButton = document.querySelector('.where-at');
 const tbody = document.querySelector('.resolutions-list tbody');
 const widthSorting = document.querySelector('.width-header');
 const heightSorting = document.querySelector('.height-header');
 const portionSorting = document.querySelector('.portion-header');
+
+let pathsToDBArray = './russia-resolutions.json';
 
 let resolutions = [];
 let allResolutionsArray = [];
 let isWidthDescending = true;
 let isHeightDescending = true;
 let isPortionDescending = true;
+let isWhereAtWorld = false;
 
 function renderTableRows(arr) {
   arr.forEach((obj, idx) => {
@@ -27,7 +31,7 @@ function renderTableRows(arr) {
 
 async function loadResolutions() {
   try {
-    const response = await fetch('./resolutions.json');
+    const response = await fetch(pathsToDBArray);
     resolutions = await response.json();
 
     allResolutionsArray = [
@@ -35,7 +39,7 @@ async function loadResolutions() {
       ...resolutions.tablet,
       ...resolutions.mobile,
     ];
-		renderTableRows(allResolutionsArray);
+    renderTableRows(allResolutionsArray);
   } catch (error) {
     console.error('Error fetching resolutions data:', error);
   }
@@ -61,25 +65,52 @@ function combineAndSort(dataObj, key, descending = true) {
   });
 }
 
-widthSorting.addEventListener('click', () =>{
-	const sortedByWidthArray = combineAndSort(resolutions, 'width', isWidthDescending);
-	tbody.innerHTML = '';
-	renderTableRows(sortedByWidthArray);
-	isWidthDescending = !isWidthDescending;
+widthSorting.addEventListener('click', () => {
+  const sortedByWidthArray = combineAndSort(
+    resolutions,
+    'width',
+    isWidthDescending,
+  );
+  tbody.innerHTML = '';
+  renderTableRows(sortedByWidthArray);
+  isWidthDescending = !isWidthDescending;
 });
 
-heightSorting.addEventListener('click', () =>{
-	const sortedByHeightArray = combineAndSort(resolutions, 'height', isHeightDescending);
-	tbody.innerHTML = '';
-	renderTableRows(sortedByHeightArray);
-	isHeightDescending = !isHeightDescending;
+heightSorting.addEventListener('click', () => {
+  const sortedByHeightArray = combineAndSort(
+    resolutions,
+    'height',
+    isHeightDescending,
+  );
+  tbody.innerHTML = '';
+  renderTableRows(sortedByHeightArray);
+  isHeightDescending = !isHeightDescending;
 });
 
-portionSorting.addEventListener('click', () =>{
-	const sortedByPortionArray = combineAndSort(resolutions, 'portion', isPortionDescending);
-	tbody.innerHTML = '';
-	renderTableRows(sortedByPortionArray);
-	isPortionDescending = !isPortionDescending;
+portionSorting.addEventListener('click', () => {
+  const sortedByPortionArray = combineAndSort(
+    resolutions,
+    'portion',
+    isPortionDescending,
+  );
+  tbody.innerHTML = '';
+  renderTableRows(sortedByPortionArray);
+  isPortionDescending = !isPortionDescending;
+});
+
+whereAtButton.addEventListener('click', () => {
+	isWhereAtWorld = !isWhereAtWorld;
+
+  if (isWhereAtWorld) {
+    whereAtButton.textContent = 'мире';
+    pathsToDBArray = './world-resolutions.json';
+  } else {
+    pathsToDBArray = './russia-resolutions.json';
+    whereAtButton.textContent = 'Российской Федерации';
+  }
+	
+  tbody.innerHTML = '';
+  loadResolutions();
 });
 
 loadResolutions();
