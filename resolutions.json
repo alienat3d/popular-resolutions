@@ -1,0 +1,98 @@
+{
+	"desktop": [
+		{
+			"width": 2560,
+			"height": 1440,
+			"portion": 4.2
+		},
+		{
+			"width": 1920,
+			"height": 1080,
+			"portion": 28.8
+		},
+		{
+			"width": 1536,
+			"height": 864,
+			"portion": 8.5
+		},
+		{
+			"width": 1366,
+			"height": 768,
+			"portion": 6.4
+		},
+		{
+			"width": 1280,
+			"height": 1200,
+			"portion": 17.8
+		},
+		{
+			"width": 800,
+			"height": 600,
+			"portion": 3.3
+		}
+	],
+	"tablet": [
+		{
+			"width": 1280,
+			"height": 800,
+			"portion": 7.9
+		},
+		{
+			"width": 1143,
+			"height": 686,
+			"portion": 6.5
+		},
+		{
+			"width": 1143,
+			"height": 686,
+			"portion": 5.9
+		},
+		{
+			"width": 1098,
+			"height": 686,
+			"portion": 3.1
+		},
+		{
+			"width": 768,
+			"height": 1024,
+			"portion": 8.8
+		},
+		{
+			"width": 686,
+			"height": 1098,
+			"portion": 5.7
+		}
+	],
+	"mobile": [
+		{
+			"width": 414,
+			"height": 896,
+			"portion": 16.8
+		},
+		{
+			"width": 393,
+			"height": 873,
+			"portion": 8.9
+		},
+		{
+			"width": 390,
+			"height": 844,
+			"portion": 7.1
+		},
+		{
+			"width": 384,
+			"height": 832,
+			"portion": 3.4
+		},
+		{
+			"width": 375,
+			"height": 812,
+			"portion": 7.9
+		},
+		{
+			"width": 360,
+			"height": 800,
+			"portion": 8.2
+		}
+	]
+}
