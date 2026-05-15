@@ -1,10 +1,30 @@
+/* === */
+// This script dynamically changes the favicon based on the user's system color scheme preference (dark or light mode).
+const favicon = document.getElementById('favicon');
+
+function switchFavicon(evt) {
+  if (evt.matches) {
+    // System is in Dark Mode
+    favicon.href = './favicon/favicon-dark.png';
+  } else {
+    // System is in Light Mode
+    favicon.href = './favicon/favicon-light.png';
+  }
+}
+
+const matcher = window.matchMedia('(prefers-color-scheme: dark)');
+matcher.addEventListener('change', switchFavicon);
+
+switchFavicon(matcher);
+/* / === */
+
 const whereAtButton = document.querySelector('.where-at');
 const tbody = document.querySelector('.resolutions-list tbody');
 const widthSorting = document.querySelector('.width-header');
 const heightSorting = document.querySelector('.height-header');
 const portionSorting = document.querySelector('.portion-header');
 
-let pathsToDBArray = './russia-resolutions.json';
+let pathsToDBArray = './db/russia-resolutions.json';
 
 let resolutions = [];
 let allResolutionsArray = [];
@@ -103,10 +123,10 @@ whereAtButton.addEventListener('click', () => {
 
   if (isWhereAtWorld) {
     whereAtButton.textContent = 'мире';
-    pathsToDBArray = './world-resolutions.json';
+    pathsToDBArray = './db/world-resolutions.json';
   } else {
     whereAtButton.textContent = 'Российской Федерации';
-    pathsToDBArray = './russia-resolutions.json';
+    pathsToDBArray = './db/russia-resolutions.json';
   }
 	
   tbody.innerHTML = '';
