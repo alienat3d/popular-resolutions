@@ -19,9 +19,9 @@ switchFavicon(matcher);
 /* / === */
 /* === */
 // Change theme by trigger button.
-const themeSwitcher = document.querySelector('.theme-toggle');
+const themeToggleButton = document.querySelector('.theme-toggle-input');
 
-themeSwitcher.addEventListener('click', () => {
+themeToggleButton.addEventListener('click', () => {
 	document.body.classList.toggle('dark-theme');
 });
 /* / === */

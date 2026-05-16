@@ -16,7 +16,14 @@
 
 <body>
 	<header>
-		<button class="theme-toggle">Сменить тему</button>
+		<div class="theme-toggle" tooltip="Сменить цветовую схему">
+			<input class="theme-toggle-input" type="checkbox" name="theme-toggle" id="theme-toggle">
+			<label class="theme-toggle-label" for="theme-toggle">
+				<div class="theme-toggle-inner">
+					<div class="theme-toggle-ball"></div>
+				</div>
+			</label>
+		</div>
 	</header>
 	<main>
 		<div class="container">
