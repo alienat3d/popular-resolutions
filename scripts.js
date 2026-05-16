@@ -1,6 +1,9 @@
 /* === */
-// This script dynamically changes the favicon based on the user's system color scheme preference (dark or light mode).
+// This script dynamically changes the favicon based on the user's system color scheme preference (dark or light mode). Also check which mode is currently active and set the appropriate color theme accordingly.
 const favicon = document.getElementById('favicon');
+const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+if (darkModeQuery.matches) document.body.classList.add('dark-theme');
 
 function switchFavicon(evt) {
   if (evt.matches) {
@@ -12,10 +15,9 @@ function switchFavicon(evt) {
   }
 }
 
-const matcher = window.matchMedia('(prefers-color-scheme: dark)');
-matcher.addEventListener('change', switchFavicon);
+darkModeQuery.addEventListener('change', switchFavicon);
 
-switchFavicon(matcher);
+switchFavicon(darkModeQuery);
 /* / === */
 /* === */
 // Change theme by trigger button.
@@ -103,7 +105,7 @@ function toggleSortingIcon(iconImg, flag) {
     sortingIcons.forEach((item) => {
       item !== iconImg ? item.classList.remove('shown') : null;
     });
-		flag
+    flag
       ? (iconImg.src = './img/sorting-descending.svg')
       : (iconImg.src = './img/sorting-ascending.svg');
     setTimeout(() => iconImg.classList.add('shown'), 0);
