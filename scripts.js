@@ -22,7 +22,7 @@ switchFavicon(matcher);
 const themeToggleButton = document.querySelector('.theme-toggle-input');
 
 themeToggleButton.addEventListener('click', () => {
-	document.body.classList.toggle('dark-theme');
+  document.body.classList.toggle('dark-theme');
 });
 /* / === */
 /* === */
@@ -32,6 +32,10 @@ const tbody = document.querySelector('.resolutions-list tbody');
 const widthSorting = document.querySelector('.width-header');
 const heightSorting = document.querySelector('.height-header');
 const portionSorting = document.querySelector('.portion-header');
+const widthSortingIcon = widthSorting.querySelector('img');
+const heightSortingIcon = heightSorting.querySelector('img');
+const portionSortingIcon = portionSorting.querySelector('img');
+const sortingIcons = [widthSortingIcon, heightSortingIcon, portionSortingIcon];
 
 let pathsToDBArray = './db/russia-resolutions.json';
 
@@ -94,7 +98,24 @@ function combineAndSort(dataObj, key, descending = true) {
   });
 }
 
+function toggleSortingIcon(iconImg, flag) {
+  if (!iconImg.classList.contains('shown')) {
+    sortingIcons.forEach((item) => {
+      item !== iconImg ? item.classList.remove('shown') : null;
+    });
+		flag
+      ? (iconImg.src = './img/sorting-descending.svg')
+      : (iconImg.src = './img/sorting-ascending.svg');
+    setTimeout(() => iconImg.classList.add('shown'), 0);
+  } else {
+    flag
+      ? (iconImg.src = './img/sorting-descending.svg')
+      : (iconImg.src = './img/sorting-ascending.svg');
+  }
+}
+
 widthSorting.addEventListener('click', () => {
+  toggleSortingIcon(widthSortingIcon, isWidthDescending);
   const sortedByWidthArray = combineAndSort(
     resolutions,
     'width',
@@ -106,6 +127,7 @@ widthSorting.addEventListener('click', () => {
 });
 
 heightSorting.addEventListener('click', () => {
+  toggleSortingIcon(heightSortingIcon, isHeightDescending);
   const sortedByHeightArray = combineAndSort(
     resolutions,
     'height',
@@ -117,6 +139,7 @@ heightSorting.addEventListener('click', () => {
 });
 
 portionSorting.addEventListener('click', () => {
+  toggleSortingIcon(portionSortingIcon, isPortionDescending);
   const sortedByPortionArray = combineAndSort(
     resolutions,
     'portion',
@@ -128,7 +151,7 @@ portionSorting.addEventListener('click', () => {
 });
 
 whereAtButton.addEventListener('click', () => {
-	isWhereAtWorld = !isWhereAtWorld;
+  isWhereAtWorld = !isWhereAtWorld;
 
   if (isWhereAtWorld) {
     whereAtButton.textContent = 'мире';
@@ -137,7 +160,7 @@ whereAtButton.addEventListener('click', () => {
     whereAtButton.textContent = 'Российской Федерации';
     pathsToDBArray = './db/russia-resolutions.json';
   }
-	
+
   tbody.innerHTML = '';
   loadResolutions();
 });

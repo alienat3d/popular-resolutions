@@ -34,6 +34,7 @@ button {
   cursor: pointer;
   user-select: none;
   border: 0;
+  padding: 0;
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
@@ -70,6 +71,10 @@ th {
   font-weight: 700;
 }
 
+td:not(:first-child) {
+  padding-left: 45px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 700px;
@@ -87,6 +92,27 @@ th {
   margin: 0 auto;
 }
 
+.width-header button,
+.height-header button,
+.portion-header button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.width-header img,
+.height-header img,
+.portion-header img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+.width-header img.shown,
+.height-header img.shown,
+.portion-header img.shown {
+  opacity: 1;
+}
+
+/* Theme toggle button */
 .theme-toggle-input {
   display: none;
 }
@@ -166,18 +192,18 @@ body.dark-theme .theme-toggle-ball {
     width: 80px;
     height: 40px;
   }
-	.theme-toggle-inner::before {
-	transform: translateY(-41%);
-  left: 4%;
-  width: 33.6px;
-  height: 40px;
-}
-.theme-toggle-inner::after {
-	transform: translateY(-46%);
-  right: 11%;
-  width: 26.4px;
-  height: 32px;
-}
+  .theme-toggle-inner::before {
+    transform: translateY(-41%);
+    left: 4%;
+    width: 33.6px;
+    height: 40px;
+  }
+  .theme-toggle-inner::after {
+    transform: translateY(-46%);
+    right: 11%;
+    width: 26.4px;
+    height: 32px;
+  }
   .theme-toggle-ball {
     transform: translateX(40px);
     border-width: 3px;
@@ -192,8 +218,14 @@ body.dark-theme .theme-toggle-ball {
   h1 {
     font-size: 28px;
   }
-	.theme-toggle-inner {
+  .theme-toggle-inner {
     margin: 0 auto;
+  }
+}
+@media (max-width: 512px) {
+  th,
+  td {
+    padding: 5px;
   }
 }
 @media (max-width: 454px) {
@@ -209,10 +241,19 @@ body.dark-theme .theme-toggle-ball {
     max-width: 320px;
     font-size: 24px;
   }
-}
-@media (max-width: 386px) {
-  th,
-  td {
-    padding: 5px;
+  .width-header button,
+  .height-header button,
+  .portion-header button {
+    flex-direction: column;
+    justify-content: end;
   }
+  td:not(:first-child) {
+    padding-left: 7px;
+  }
+	th, td {
+    text-align: center;
+	}
+	th {
+		align-content: flex-end;
+	}
 }
