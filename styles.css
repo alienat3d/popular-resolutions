@@ -75,6 +75,10 @@ td:not(:first-child) {
   padding-left: 45px;
 }
 
+footer {
+	text-align: center;
+}
+
 .container {
   margin: 0 auto;
   max-width: 700px;
@@ -89,7 +93,7 @@ td:not(:first-child) {
 }
 
 .resolutions-list {
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
 
 .width-header button,

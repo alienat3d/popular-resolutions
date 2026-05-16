@@ -1,6 +1,6 @@
 /* === */
 // This script dynamically changes the favicon based on the user's system color scheme preference (dark or light mode). Also check which mode is currently active and set the appropriate color theme accordingly.
-const favicon = document.getElementById('favicon');
+const favicon = document.querySelector('#favicon');
 const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 if (darkModeQuery.matches) document.body.classList.add('dark-theme');
@@ -37,6 +37,8 @@ const portionSorting = document.querySelector('.portion-header');
 const widthSortingIcon = widthSorting.querySelector('img');
 const heightSortingIcon = heightSorting.querySelector('img');
 const portionSortingIcon = portionSorting.querySelector('img');
+const footerLink = document.querySelector('.footer-link');
+
 const sortingIcons = [widthSortingIcon, heightSortingIcon, portionSortingIcon];
 
 let pathsToDBArray = './db/russia-resolutions.json';
@@ -158,9 +160,11 @@ whereAtButton.addEventListener('click', () => {
   if (isWhereAtWorld) {
     whereAtButton.textContent = 'мире';
     pathsToDBArray = './db/world-resolutions.json';
+		footerLink.href = 'https://gs.statcounter.com/screen-resolution-stats/worldwide';
   } else {
     whereAtButton.textContent = 'Российской Федерации';
     pathsToDBArray = './db/russia-resolutions.json';
+		footerLink.href = 'https://gs.statcounter.com/screen-resolution-stats/russian-federation';
   }
 
   tbody.innerHTML = '';
